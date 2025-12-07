@@ -3,6 +3,8 @@ import TP2
 import TP31
 import TP32
 import TP33
+import TP41
+import Tp42
 
 t = []
 b=[]
@@ -27,6 +29,8 @@ while True :
             print("2- Gauss pivot non null  ")
             print("3- Gauss pivot partiel  ")
             print("4- Gauss pivot total  ")
+            print("5- Decomposition LU  ")
+            print("6- Gauss Jordan  ")
             print("0- exit method direct")
             choix2 = int(input("entre type de method : "))
             if choix2 == 1 :
@@ -37,6 +41,11 @@ while True :
                 TP32.Gauss_partial(t, b)
             elif choix2 == 4 :
                 TP33.Gauss_total(t, b)
+            elif choix2 == 5 :
+                TP41.decomposition_final(t, b)
+            elif choix2 == 6 :
+                print("la solution est : ")
+                print(Tp42.gauss_jordan(t, b))
             elif choix2 == 0 :
                 break    
 
