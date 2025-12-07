@@ -14,6 +14,8 @@ def triangularisation(t, b):
                 b[j] = b[j] - q * b[i]
         else : 
             return "detareminat is null"
+        print(f"eteration {i + 1} : ")
+        TP1.afficher_matrice(t, b)
     return t, b
 
 def Gauss_pivot_non_null(t,b) : 

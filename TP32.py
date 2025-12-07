@@ -1,4 +1,5 @@
-from TP1 import *
+import TP1
+import TP2
 
 def triangularisation_partielle(t, b) :
     n = len(t)
@@ -11,30 +12,23 @@ def triangularisation_partielle(t, b) :
                 p = t[i][k]
                 l = i
         if l != k :
-            change_ligne(t, k, l)
+            TP1.change_ligne(t, k, l)
             b[k] , b[l] = b[l], b[k]
         for i in range(k + 1, n) :    
-            print("iteration i =",i)   
             q = t[i][k]
             t[i][k] = 0
             b[i] = b[i] - (q / p) * b[k]
             for j in range(k + 1, n) :
-                t[i][j] = t[i][j] - t[k][j] * (q / p)    
-            afficher_matrice(t)
-            print(b)     
+                t[i][j] = t[i][j] - t[k][j] * (q / p)   
+        print(f"eteration {k + 1} : ")
+        TP1.afficher_matrice(t, b)           
     return t, b
 
 def Gauss_partial(t, b) :
     print("le sysstem est: ")
-    afficher_matrice(t)
-    print(b)
+    TP1.afficher_matrice(t, b)
     t, b= triangularisation_partielle(t, b)
     print("le matrice reduit est: ")
-    afficher_matrice(t)
-    print(b)
+    TP1.afficher_matrice(t, b)
     print("le resulta donne: ")
-    print(remonte(t, b))
-
-t = [[1, 6, 9], [2, 1, 2], [3, 6, 9]]
-b = [1, 2, 3]
-Gauss_partial(t, b)
+    print(TP2.remonte(t, b))
