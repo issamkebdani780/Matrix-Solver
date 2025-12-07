@@ -39,3 +39,26 @@ def carmer(t, b) :
             copie[j][i] = b[j]
         x[i] =  TP1.determinant(copie) / det
     return x
+
+def carmer_recursive(t, b, i=0, x=None):
+    n = len(t)
+    if x is None:
+        x = [0] * n
+    
+    det = TP1.determinant(t)
+    if det == 0:
+        return "Le système n'a pas de solution"
+    
+    if i == n:
+        return x
+    
+    copie = lo(t, b, i, n)
+    x[i] = TP1.determinant(copie) / det
+    
+    return carmer_recursive(t, b, i + 1, x)
+
+def lo(t, b, i, n) :
+    copie = [row[:] for row in t]
+    for j in range(n):
+        copie[j][i] = b[j]
+    return copie

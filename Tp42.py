@@ -16,6 +16,24 @@ def gauss_jordan(t, b):
                 b[i] -= q * b[k]
     return b
 
+def gauss_jorda_recursive(t, b, k = 0):
+    n = len(t)
+    if k == n:
+        return b
+    p = t[k][k]
+
+    for j in range(n):
+        t[k][j] /= p
+    b[k] /= p
+
+    for i in range(n):
+        if i != k:
+            q = t[i][k]
+            for j in range(n):
+                t[i][j] -= q * t[k][j]
+            b[i] -= q * b[k]
+    return gauss_jorda_recursive(t, b, k + 1)
+
 def matrice_inveres(t):
     n = len(t)
 
